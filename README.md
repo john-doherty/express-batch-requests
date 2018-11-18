@@ -45,10 +45,13 @@ server.listen(8080, function () {
 
 Requests are executed in parallel by default, to execute them in series add `executeInSeries: true`. Likewise, to include the original request object with each result add `includeRequestsInResponse: true` to the request.
 
+To copy HTTP headers from the batch request onto each of the batch request such as **authorization**, add `mergeHeaders` with a string containing a comma separated list of header names _(in lower case)_.
+
 ```json
 {
     "executeInSeries": true,
     "includeRequestsInResponse": true,
+    "mergeHeaders": "authorization, x-requested-by",
     "batch": [
         {
             "url": "/route1",

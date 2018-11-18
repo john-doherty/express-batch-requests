@@ -79,7 +79,6 @@ describe('express-batch-requests', function () {
             });
     });
 
-
     it('response should exclude requests by default', function (done) {
 
         var testBatch = {
@@ -133,6 +132,65 @@ describe('express-batch-requests', function () {
                 expect(res.body[1].response.body.fullName).toEqual('Buzz Lightyear');
 
                 // mark test as complete
+                done(err);
+            });
+    });
+
+
+    it('should merge headers', function (done) {
+
+        var testBatch = {
+            "executeInSeries": true,
+            "includeRequestsInResponse": true,
+            "mergeHeaders": "xrequestedwith",
+            "batch": [
+                {
+                    "url": "/route1",
+                    "method": "GET",
+                    "headers": {
+                        "x-fake-header-1": (new Date()).getTime(),
+                        "x-fake-header-2": (new Date()).getTime()
+                    }
+                },
+                {
+                    "url": "/route2",
+                    "method": "POST",
+                    "headers": {
+                        "x-fake-header-1": (new Date()).getTime(),
+                        "x-fake-header-2": (new Date()).getTime()
+                    }
+                }
+            ]
+        };
+
+        app.get('/route1', function (req, res) {
+            res.send("Hello");
+        });
+
+        app.post('/route2', function (req, res) {
+            res.send("World");
+        });
+
+        // execute request and test response
+        request(app).post('/batch')
+            .set('XRequestedWith', 'SuperTest')
+            .send(testBatch)
+            .expect(200)
+            .end(function (err, res) {
+
+                // check we have a response
+                expect(res.body).toBeDefined();
+                expect(Array.isArray(res.body)).toBe(true);
+                expect(res.body.length).toEqual(2);
+
+                expect(res.body[0].request.headers['x-fake-header-1']).toEqual(testBatch.batch[0].headers['x-fake-header-1']);
+                expect(res.body[0].request.headers['x-fake-header-2']).toEqual(testBatch.batch[0].headers['x-fake-header-2']);
+                expect(res.body[0].request.headers['xrequestedwith']).toEqual('SuperTest');
+
+                expect(res.body[1].request.headers['x-fake-header-1']).toEqual(testBatch.batch[1].headers['x-fake-header-1']);
+                expect(res.body[1].request.headers['x-fake-header-2']).toEqual(testBatch.batch[1].headers['x-fake-header-2']);
+                expect(res.body[1].request.headers['xrequestedwith']).toEqual('SuperTest');
+
                 done(err);
             });
     });

@@ -3,6 +3,7 @@
 var urlParser = require('url');
 var async = require('async');
 var request = require('request');
+var _ = require('lodash');
 
 /**
  * Express middleware to process batch HTTP requests
@@ -29,6 +30,11 @@ function expressBatchRequests(req, res) {
     var includeRequestsInResponse = (req.body.includeRequestsInResponse === true);
     var execMethod = (req.body.executeInSeries === true) ? 'mapSeries' : 'map';
 
+    // get list of header to merge from original request if present
+    var mergeHeaders = (req.body.mergeHeaders || ',').toString().toLowerCase().split(',').filter(Boolean).map(function(item) {
+        return item.trim();
+    });
+
     // execute requests in series if set, otherwise parallel
     async[execMethod](requests, function (item, callback) {
 
@@ -41,6 +47,13 @@ function expressBatchRequests(req, res) {
             method: (typeof item.method !== 'undefined') ? item.method : 'GET',
             headers: item.headers
         };
+
+        if (mergeHeaders.length > 0) {
+            reqParams.headers = Object.assign({}, _.pick(req.headers, mergeHeaders), reqParams.headers);
+
+            // modify original incase user wants to return requests with response
+            item.headers = reqParams.headers;
+        }
 
         if (typeof item.body === 'object') {
             reqParams.body = item.body;
