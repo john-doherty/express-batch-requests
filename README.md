@@ -3,7 +3,7 @@
 [![Shippable branch](https://img.shields.io/shippable/5bf18eee3038210700d633d7/master.svg)](https://app.shippable.com/projects/5bf18eee3038210700d633d7)
 [![Linked In](https://img.shields.io/badge/Linked-In-blue.svg)](https://www.linkedin.com/in/john-i-doherty) [![Twitter Follow](https://img.shields.io/twitter/follow/mrJohnDoherty.svg?style=social&label=Twitter&style=plastic)](https://twitter.com/mrJohnDoherty)
 
-A simple way to add a HTTP batch request support to your node API using express middleware.
+A simple way to add HTTP batch request support to your node API using express middleware.
 
 Batching HTTP requests allows client applications to issue multiple HTTP requests to your API using just one HTTP request - reducing network chatter, latency etc. This middleware extracts and executes each request individually, either in parallel or in series, and returns the result of each request as an array item.
 

@@ -1,7 +1,7 @@
 {
   "name": "express-batch-requests",
   "description": "Express middleware to process batch HTTP requests",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/john-doherty/express-batch-requests",
   "main": "index.js",
   "scripts": {
