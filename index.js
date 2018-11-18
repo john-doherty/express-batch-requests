@@ -25,11 +25,9 @@ function expressBatchRequests(req, res) {
     host += ((port !== '') ? ':' + port : '');
 
     var baseUrl = protocol + '://' + host;
-
-    var inSeries = (req.body.executeInSeries === true);
-    var includeRequestsInResponse = (req.body.includeRequestsInResponse === true);
     var requests = req.body.batch || [];
-    var execMethod = inSeries ? 'mapSeries' : 'map';
+    var includeRequestsInResponse = (req.body.includeRequestsInResponse === true);
+    var execMethod = (req.body.executeInSeries === true) ? 'mapSeries' : 'map';
 
     // execute requests in series if set, otherwise parallel
     async[execMethod](requests, function (item, callback) {
