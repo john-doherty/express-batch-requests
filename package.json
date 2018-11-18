@@ -1,0 +1,40 @@
+{
+  "name": "express-batch-requests",
+  "description": "Express middleware to process batch HTTP requests",
+  "version": "1.0.0",
+  "homepage": "https://github.com/john-doherty/express-batch-requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/jasmine-node/bin/jasmine-node tests --verbose --color --forceexit --junitreport || true"
+  },
+  "author": {
+    "name": "John Doherty",
+    "email": "contact@johndoherty.info",
+    "url": "https://courseof.life/johndoherty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/john-doherty/express-batch-requests.git"
+  },
+  "bugs": {
+    "url": "https://github.com/john-doherty/express-batch-requests/issues"
+  },
+  "keywords": [
+    "expressjs",
+    "express",
+    "request",
+    "requests",
+    "batch",
+    "api"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.4",
+    "jasmine-node": "^1.16.2",
+    "supertest": "^3.3.0"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "request": "^2.88.0"
+  }
+}
