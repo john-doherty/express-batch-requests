@@ -1,5 +1,6 @@
 # express-batch-requests
 
+[![Shippable branch](https://img.shields.io/shippable/5bf18eee3038210700d633d7/master.svg)](https://app.shippable.com/projects/5bf18eee3038210700d633d7)
 [![Linked In](https://img.shields.io/badge/Linked-In-blue.svg)](https://www.linkedin.com/in/john-i-doherty) [![Twitter Follow](https://img.shields.io/twitter/follow/mrJohnDoherty.svg?style=social&label=Twitter&style=plastic)](https://twitter.com/mrJohnDoherty)
 
 A simple way to add a HTTP batch request support to your node API using express middleware.
