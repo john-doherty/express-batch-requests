@@ -55,16 +55,6 @@ function expressBatchRequests(req, res) {
         // execute request
         request(reqParams, function (err, result, body) {
 
-            // // check if the response if JSON
-            // var isJSONResponse = ((result.headers['content-type'] || '').toString().indexOf('application/json;') === 0);
-
-            // // if so, parse it
-            // if (isJSONResponse) {
-            //     body = JSON.parse(body);
-            // } else {
-            //     body = body.toString();
-            // }
-
             // build the response to this request
             var resBody = {
                 response: {
