@@ -9,8 +9,7 @@
   },
   "author": {
     "name": "John Doherty",
-    "email": "contact@johndoherty.info",
-    "url": "https://courseof.life/johndoherty"
+    "email": "contact@johndoherty.info"
   },
   "repository": {
     "type": "git",
@@ -20,12 +19,13 @@
     "url": "https://github.com/john-doherty/express-batch-requests/issues"
   },
   "keywords": [
-    "expressjs",
+    "node",
     "express",
     "request",
     "requests",
     "batch",
-    "api"
+    "api",
+    "http"
   ],
   "license": "MIT",
   "devDependencies": {
