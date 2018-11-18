@@ -5,9 +5,7 @@
 
 A simple way to add a HTTP batch request support to your node API using express middleware.
 
-Batching HTTP requests allows client applications to issue multiple HTTP requests to your API using just one HTTP request - reducing network chatter, latency etc.
-
-This middleware extracts and executes each request individually, either in parallel or in series, and returns the result of each request as an array item.
+Batching HTTP requests allows client applications to issue multiple HTTP requests to your API using just one HTTP request - reducing network chatter, latency etc. This middleware extracts and executes each request individually, either in parallel or in series, and returns the result of each request as an array item.
 
 ## Installation
 
@@ -45,9 +43,7 @@ server.listen(8080, function () {
 
 ## Request
 
-Requests are executed in parallel by default, to execute them in series add `executeInSeries: true`.
-
-To include the original request object with each result, add `includeRequestsInResponse: true`.
+Requests are executed in parallel by default, to execute them in series add `executeInSeries: true`. Likewise, to include the original request object with each result add `includeRequestsInResponse: true` to the request.
 
 ```json
 {
