@@ -72,6 +72,10 @@ describe('express-batch-requests', function () {
                 expect(res.body[1].request.method).toEqual(testBatch.batch[1].method);
 
                 expect(res.body[0].response.body).toEqual('Hello');
+
+                // var body1 = JSON.parse(res.body[1].response.body);
+
+
                 expect(res.body[1].response.body.fullName).toEqual('Buzz Lightyear');
 
                 // mark test as complete
